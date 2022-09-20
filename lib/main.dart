@@ -14,20 +14,51 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        // routeName:(context) => MyApp(),
-        ScreenOne.routeName:(context) => const ScreenOne(),
-        ScreenTwo.routeName:(context) => const ScreenTwo(),
-      },
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("main scrren"),
-        ),
-        body: const Center(child: Text('this is the main screen')),
-        drawer: const MyDrawer(),
+    return DefaultTabController(
+      length: 2,
+      child: MaterialApp(
+        initialRoute: '/',
+        routes: {
+          // routeName:(context) => MyApp(),
+          ScreenOne.routeName: (context) => const ScreenOne(),
+          ScreenTwo.routeName: (context) => const ScreenTwo(),
+        },
+        home: myScaffold(),
       ),
     );
   }
+
+  Scaffold myScaffold() => Scaffold(
+        appBar: AppBar(
+          title: const Text("main scrren"),
+          bottom: myTabBar(),
+        ),
+        body: myTabBarView(),
+        // body:const Text("some text to show"),
+        drawer: const MyDrawer(),
+      );
+
+  TabBar myTabBar() {
+    const tabs = [
+          Tab(icon: Icon(Icons.category), text: ("screen 1")),
+          Tab(icon: Icon(Icons.star), text: ("screen 2")),
+        ];
+    return const TabBar(
+        tabs: tabs,
+      );
+  }
+  TabBarView myTabBarView() => const TabBarView(
+        children: [
+          Center(
+              child: Text(
+            "this is screen 1",
+            style: TextStyle(fontSize: 32),
+          )),
+          Center(
+              child: Text(
+            "this is screen 2 ",
+            style: TextStyle(fontSize: 32),
+          )),
+        ],
+      );
 }
