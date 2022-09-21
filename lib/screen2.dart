@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multiscreen_app/screen1.dart';
 import 'package:multiscreen_app/drawer.dart';
 
 class ScreenTwo extends StatefulWidget {
@@ -26,9 +25,5 @@ class _ScreenTwoState extends State {
         title: const Text("screen 2"),
       );
 
-  Widget myBody() => TextButton(
-        onPressed: () => {},
-        child: const Center(child: Text("go to screen 1")),
-      );
-  }
+   }
 
